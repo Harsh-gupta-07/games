@@ -1,103 +1,337 @@
+"use client";
 import Image from "next/image";
+import {  useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter()
+  
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="bg-[#181a1b] w-full h-full p-5 flex flex-col items-center justify-center">
+      <div className="text-center mb-8">
+        <h2 className="font-extrabold text-[#33a1f4] text-3xl md:text-4xl mb-2">
+          Welcome to PlayMind!
+        </h2>
+        <p className="text-lg text-gray-500">Choose a game to start playing</p>
+      </div>
+      <div className="w-4xl grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="border border-gray-500 text-card-foreground bg-[#181a1b] rounded-xl shadow-lg overflow-hidden hover:shadow-xl duration-300 transform hover:-translate-y-1 transition-transform">
+          <div className="h-48 bg-secondary relative overflow-hidden">
+            <img
+              src="./quiz.jpg"
+              alt="Trivia Quiz concept"
+              className="w-full h-full object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/80 to-transparent flex items-end">
+              <h3 className="text-white text-shadow-lg text-shadow-black font-nunito font-bold text-2xl p-4">
+                Trivia Quiz
+              </h3>
+            </div>
+          </div>
+          <div className="p-6">
+            <p className="mb-4">
+              Test your knowledge across various categories and score points!
+            </p>
+            <ul className="mb-6 text-sm">
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Multiple categories</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Timed questions</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Three difficulty levels</span>
+              </li>
+            </ul>
+
+            <button
+              onClick={() => {
+                router.push("/quiz");
+              }}
+              className="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 w-full bg-primary hover:bg-primary/90 text-white font-nunito font-bold py-3 px-4 rounded-lg transition-colors"
+            >
+              Play Trivia Quiz
+            </button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/*  */}
+        <div className="border border-gray-500 text-card-foreground bg-[#181a1b] rounded-xl shadow-lg overflow-hidden hover:shadow-xl duration-300 transform hover:-translate-y-1 transition-transform">
+          <div className="h-48 bg-secondary relative overflow-hidden">
+            <img
+              src="./memory.jpg"
+              alt="Trivia Quiz concept"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/80 to-transparent flex items-end">
+              <h3 className="text-white text-shadow-lg text-shadow-black font-nunito font-bold text-2xl p-4">
+                Memory Game
+              </h3>
+            </div>
+          </div>
+          <div className="p-6">
+            <p className="mb-4">
+              Match pairs of cards by flipping them over. Test your memory!
+            </p>
+            <ul className="mb-6 text-sm">
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Fun card-flipping action</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Multiple difficulty levels</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Track attempts and time</span>
+              </li>
+            </ul>
+
+            <button
+              onClick={() => {
+                router.push("/memory");
+              }}
+              className="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 w-full bg-primary hover:bg-primary/90 text-white font-nunito font-bold py-3 px-4 rounded-lg transition-colors"
+            >
+              Play Memory Game
+            </button>
+          </div>
+        </div>
+
+        <div className="border border-gray-500 text-card-foreground bg-[#181a1b] rounded-xl shadow-lg overflow-hidden hover:shadow-xl duration-300 transform hover:-translate-y-1 transition-transform">
+          <div className="h-48 bg-secondary relative overflow-hidden">
+            <img
+              src="./word.jpg"
+              alt="Trivia Quiz concept"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/80 to-transparent flex items-end">
+              <h3 className="text-white  text-shadow-lg text-shadow-black font-nunito font-bold text-2xl p-4">
+                Word Scramble
+              </h3>
+            </div>
+          </div>
+          <div className="p-6">
+            <p className="mb-4">
+              Unscramble letters to form correct words against the clock!
+            </p>
+            <ul className="mb-6 text-sm">
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Various word categories</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Adjustable difficulty</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Hint system for tough words</span>
+              </li>
+            </ul>
+
+            <button
+              onClick={() => {
+                router.push("/wordScramble");
+              }}
+              className="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 w-full bg-primary hover:bg-primary/90 text-white font-nunito font-bold py-3 px-4 rounded-lg transition-colors"
+            >
+              Play Word Scramble
+            </button>
+          </div>
+        </div>
+
+        <div className="border border-gray-500 text-card-foreground bg-[#181a1b] rounded-xl shadow-lg overflow-hidden hover:shadow-xl duration-300 transform hover:-translate-y-1 transition-transform">
+          <div className="h-48 bg-secondary relative overflow-hidden">
+            <img
+              src="./reaction.webp"
+              alt="Trivia Quiz concept"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary/80 to-transparent flex items-end">
+              <h3 className="text-white text-shadow-lg text-shadow-black font-nunito font-bold text-2xl p-4">
+                Reaction Test
+              </h3>
+            </div>
+          </div>
+          <div className="p-6">
+            <p className="mb-4">
+              Test your reflexes by clicking targets as fast as possible!
+            </p>
+            <ul className="mb-6 text-sm">
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Track reaction time</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Compete for fastest times</span>
+              </li>
+              <li className="flex items-center mb-2">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className=" text-accent mr-2"
+                >
+                  <path d="M20 6 9 17l-5-5"></path>
+                </svg>
+                <span>Multiple game modes</span>
+              </li>
+            </ul>
+
+            <button
+              onClick={() => {
+                router.push("/reaction");
+              }}
+              className="cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 w-full bg-primary hover:bg-primary/90 text-white font-nunito font-bold py-3 px-4 rounded-lg transition-colors"
+            >
+              Play Reaction Test
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
